@@ -1,21 +1,27 @@
 package de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.movies
 
+import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.genre.Genre
+import org.springframework.data.repository.findByIdOrNull
 import java.util.*
 
 class MoviesServiceImpl (private val moviesRepository: MoviesRepository) : MoviesService {
     override fun findById(id: UUID): Movie? {
-        TODO("Not yet implemented")
+        return moviesRepository.findByIdOrNull(id)
     }
 
     override fun findAllMovies(): List<Movie> {
-        TODO("Not yet implemented")
+        return moviesRepository.findAll().toList()
+    }
+
+    override fun findByGenre(genre: Genre): List<Movie> {
+        return findAllMovies().filter { TODO() }.toList()
     }
 
     override fun delete(movie: Movie) {
-        TODO("Not yet implemented")
+        moviesRepository.delete(movie)
     }
 
     override fun favourise(movie: Movie) {
-        TODO("Not yet implemented")
+        moviesRepository.save(movie)
     }
 }
