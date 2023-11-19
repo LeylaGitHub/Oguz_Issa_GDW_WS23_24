@@ -1,8 +1,11 @@
 package de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.movies
 
+import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.genre.Genre
+import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.users.User
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id
+import jakarta.persistence.ManyToOne
 import org.hibernate.annotations.GenericGenerator
 import java.util.*
 
@@ -16,8 +19,10 @@ class Movie {
     var dateOfRelease: Date = Date()
     var fsk: Int = 0
     var duration: Int = 0
-//    var genre: Genre
+    var genre: List<Genre> = listOf()
 
+    @ManyToOne
+    var user: User? = null
 
     override fun toString(): String {
         return "ID: $id, Name: $name, Date of Release: $dateOfRelease, FSK: $fsk, Duration in min: $duration"
