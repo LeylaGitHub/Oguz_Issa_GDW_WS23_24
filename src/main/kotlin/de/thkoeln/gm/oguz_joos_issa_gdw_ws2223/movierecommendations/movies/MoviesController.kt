@@ -18,7 +18,7 @@ class MoviesController (private val moviesService: MoviesService, private val us
     fun saveMovie(name: String, @PathVariable userId: UUID): String {
         val user: User? = usersService.findById(userId)
         if(user != null) {
-            var movie = Movie()
+            val movie = Movie()
             movie.name = name
             movie.user = user
             moviesService.favourise(movie)
@@ -31,14 +31,20 @@ class MoviesController (private val moviesService: MoviesService, private val us
     @GetMapping("/users/{userId}/movies")
     @ResponseBody
     fun getAllMovies(@PathVariable userId: UUID): String {
-        TODO()
+        val user: User? = usersService.findById(userId)
+        if(user != null) {
+            val movies: List<Movie> = moviesService.getAllFavByUser(user)
+            return movies.joinToString("|")
+        } else {
+            throw ResponseStatusException(HttpStatus.NOT_FOUND)
+        }
     }
 
     @GetMapping("/users/{userId}/movies/{id}")
     @ResponseBody
     fun getMovie(@PathVariable userId: UUID, @PathVariable id: UUID): String {
-        var movie = moviesService.findById(id)
-        var user: User? = usersService.findById(userId)
+        val movie = moviesService.findById(id)
+        val user: User? = usersService.findById(userId)
 
         if(movie != null && user != null) {
             if (user.id != movie.user?.id) {
