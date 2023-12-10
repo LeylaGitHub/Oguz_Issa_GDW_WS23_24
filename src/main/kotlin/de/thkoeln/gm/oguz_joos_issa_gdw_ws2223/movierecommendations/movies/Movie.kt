@@ -19,7 +19,8 @@ class Movie {
     var dateOfRelease: Date = Date()
     var fsk: Int = 0
     var duration: Int = 0
-    var genre: List<Genre> = listOf()
+//    var genre: List<Genre> = listOf() //List<Genre> nicht möglich-->"Basic attribute type should not be a container"
+    var genre: String = ""
 
     @ManyToOne
     var user: User? = null
