@@ -8,4 +8,5 @@ import java.util.*
 class Genre {
     @Id
     var id: UUID = UUID.randomUUID()
+    var name: String = ""
 }
