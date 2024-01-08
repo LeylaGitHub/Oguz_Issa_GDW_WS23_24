@@ -23,17 +23,40 @@ class GreetingsController {
 }
 
 /**
- * Ruft die Feiertags-API auf und gibt sie als Strings aus
+ * "When is the next MCU film?"
  * */
 fun main(args: Array<String>) {
     runApplication<OguzJoosIssaGdwWs2223Application>(*args)
 
-    val client = HttpClient.newBuilder().build();
-    val request  = HttpRequest.newBuilder()
+    // Beispiel für https://www.whenisthenextmcufilm.com/
+    // -- in Bearbeitung --
+    val mcuApiURL = "https://www.whenisthenextmcufilm.com/"
+
+    val mcuClient = HttpClient.newHttpClient()
+    val mcuRequest = HttpRequest.newBuilder()
         .GET()
-        .uri(URI.create("https://feiertage-api.de/api/?nur_land=NW"))
-        .build();
-    val response = client.send(request,HttpResponse.BodyHandlers.ofString());
-    println(response.body())
+        .uri(URI.create(mcuApiURL))
+        .build()
+
+    val mcuResponse = mcuClient.send(mcuRequest, HttpResponse.BodyHandlers.ofString())
+    println("API-Antwort für MCU: ${mcuResponse.body()}")
+
+    // Beispiel für https://imdb-api.com/en/API/Title/k_12345678/tt1375666
+    // -- in Bearbeitung --
+
+    val apiKey = "dc7d9197471301b4662f3e024d3643d6"
+    val imdbId = "tt1375666" //  IMDb-ID des gesuchten Films
+
+    val imdbApiURL = "https://imdb-api.com/en/API/Title/k_$apiKey/$imdbId"
+
+    val imdbClient = HttpClient.newHttpClient()
+    val imdbRequest = HttpRequest.newBuilder()
+        .GET()
+        .uri(URI.create(imdbApiURL))
+        .build()
+
+    val imdbResponse = imdbClient.send(imdbRequest, HttpResponse.BodyHandlers.ofString())
+    println("API-Antwort für IMDb: ${imdbResponse.body()}")
+
 
 }
