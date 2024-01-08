@@ -13,18 +13,20 @@ import java.util.*
 @Entity
 class Movie {
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name ="uuid2", strategy = "uuid2")
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name="uuid2", strategy = "uuid2")
     var id: UUID = UUID.randomUUID()
     var name: String = ""
     var dateOfRelease: Date = Date()
     var fsk: Int = 0
     var duration: Int = 0
-    var genre: Genre = Genre()
+    //    var genre: List<Genre> = listOf() //List<Genre> nicht möglich-->"Basic attribute type should not be a container"
+    var genre: String = ""
 
-    /**
     @ManyToOne
-    var user = User? = null
-    */
+    var user: User? = null
 
+    override fun toString(): String {
+        return "ID: $id, Name: $name, Date of Release: $dateOfRelease, FSK: $fsk, Duration in min: $duration"
+    }
 }

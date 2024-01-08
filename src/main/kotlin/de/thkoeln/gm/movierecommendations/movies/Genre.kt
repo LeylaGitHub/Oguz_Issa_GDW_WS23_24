@@ -1,8 +1,11 @@
 package de.thkoeln.gm.movierecommendations.movies
 
 import jakarta.persistence.Entity
+import jakarta.persistence.Id
+import java.util.*
 
 @Entity
 class Genre {
-    var genres = listOf("Action", "Comedy", "Thriller", "Drama", "Fantasy", "Science-Fiction")
+    @Id
+    var id: UUID = UUID.randomUUID()
 }

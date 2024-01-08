@@ -1,27 +1,60 @@
 package de.thkoeln.gm.movierecommendations.movies
 
+import de.thkoeln.gm.movierecommendations.users.User
+import de.thkoeln.gm.movierecommendations.users.UsersService
+import org.springframework.data.crossstore.ChangeSetPersister
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestMethod
-import org.springframework.web.bind.annotation.ResponseBody
+import org.springframework.web.bind.annotation.*
+import org.springframework.web.server.ResponseStatusException
+import java.util.*
 
 // MovieController muss überarbeitet werden
 
 @Controller
-class MovieController {
+class MoviesController (private val moviesService: MoviesService, private val usersService: UsersService)  {
 
-    @GetMapping("/")
+    @PostMapping("/users/{userId}/movies")
     @ResponseBody
-    fun sayHelloWorld() : String {
-        return "Hello World"
-
+    @ResponseStatus(HttpStatus.CREATED)
+    fun saveMovie(name: String, @PathVariable userId: UUID): String {
+        val user: User? = usersService.findById(userId)
+        if(user != null) {
+            var movie = Movie()
+            movie.name = name
+            movie.user = user
+            moviesService.favourise(movie)
+            return movie.toString()
+        } else {
+            throw ChangeSetPersister.NotFoundException()
+        }
     }
 
-    @RequestMapping(path = arrayOf("/greetings"), method = arrayOf(RequestMethod.GET, RequestMethod.POST))
+    @GetMapping("/users/{userId}/movies")
     @ResponseBody
-    fun sayHello (name: String): String {
-        return "Hello ${name}"
+    fun getAllMovies(@PathVariable userId: UUID): String {
+        TODO()
     }
 
+    @GetMapping("/users/{userId}/movies/{id}")
+    @ResponseBody
+    fun getMovie(@PathVariable userId: UUID, @PathVariable id: UUID): String {
+        var movie = moviesService.findById(id)
+        var user: User? = usersService.findById(userId)
+
+        if(movie != null && user != null) {
+            if (user.id != movie.user?.id) {
+                throw ResponseStatusException(HttpStatus.FORBIDDEN)
+            }
+            return movie.toString()
+        } else {
+            throw ChangeSetPersister.NotFoundException()
+        }
+    }
+
+    @DeleteMapping("/movies/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun deleteMovie(@PathVariable id: UUID) {
+        TODO()
+    }
 }
