@@ -16,8 +16,7 @@ class FavoriteMovie {
     @GenericGenerator(name="uuid2", strategy = "uuid2")
     var id: UUID = UUID.randomUUID()
     var name: String = ""
-    var number: Int = 0
-    var content: MutableList<Movie> = mutableListOf()
+    var content: MutableList<FavoriteMovie> = mutableListOf()
 
     @OneToOne
     var user: User? = null
