@@ -8,12 +8,24 @@ class UsersServiceImpl (private val userRepository: UsersRepository) : UsersServ
         return userRepository.findByIdOrNull(id)
     }
 
-    override fun delete(user: User) {
-        userRepository.delete(user)
-    }
-
     override fun getAllUser(): String {
         return userRepository.findAll().toString()
+    }
+
+    override fun existsById(userId: UUID): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun deleteById(userId: UUID) {
+        TODO("Not yet implemented")
+    }
+
+    override fun save(user: User): User {
+        TODO("Not yet implemented")
+    }
+
+    override fun findAll(): List<User> {
+        TODO("Not yet implemented")
     }
 
 }

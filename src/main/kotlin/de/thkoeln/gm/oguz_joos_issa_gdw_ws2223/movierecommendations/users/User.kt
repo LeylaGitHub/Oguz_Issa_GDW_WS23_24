@@ -1,6 +1,6 @@
 package de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.users
 
-import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.genre.Genre
+//import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.genre.Genre
 import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.movies.Movie
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -19,13 +19,13 @@ class User {
     var mail: String = ""
     var age: Int = 0
     var favouriteMovies: MutableList<Movie> = mutableListOf()
-    var favouriteGenres: MutableList<Genre> = mutableListOf()
+  //  var favouriteGenres: MutableList<Genre> = mutableListOf()
 
 
     @ManyToOne
     var movie: Movie? = null
 
     override fun toString(): String {
-        return "ID: $id, Name: $name, Mail: $mail, Age of the user: $age, Favourite Genres: $favouriteGenres, Favourite Movies: $favouriteMovies"
+        return "ID: $id, Name: $name, Mail: $mail, Age of the user: $age, Favourite Movies: $favouriteMovies"
     }
 }
