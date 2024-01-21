@@ -1,6 +1,5 @@
 package de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.movies
 
-import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.genre.Genre
 import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.users.User
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -19,7 +18,6 @@ class Movie {
     var dateOfRelease: Date = Date()
     var fsk: Int = 0
     var duration: Int = 0
-//    var genre: List<Genre> = listOf() //List<Genre> nicht möglich-->"Basic attribute type should not be a container"
     var genre: String = ""
 
     @ManyToOne
