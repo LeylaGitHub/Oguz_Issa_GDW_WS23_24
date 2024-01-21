@@ -9,7 +9,7 @@ import java.util.*
 @Repository
 interface MoviesRepository : CrudRepository<Movie, UUID> {
     fun findByFsk() : List<Movie>
-    fun findByFavUser(user: User): List<Movie>
+    fun findByGenre(genre: String) : List<Movie>
 
     @Query(value = "SELECT m FROM Movie m WHERE m.fsk = 0 ")
     fun getAllByFsk0() : List<Movie>
