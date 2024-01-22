@@ -6,6 +6,7 @@ import jakarta.persistence.Id
 import org.hibernate.annotations.GenericGenerator
 import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.movies.Movie
 import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.users.User
+import jakarta.persistence.ManyToOne
 import jakarta.persistence.OneToOne
 import java.util.*
 
@@ -13,11 +14,10 @@ import java.util.*
 class FavoriteMovie {
     @Id
     @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name="uuid2", strategy = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     var id: UUID = UUID.randomUUID()
     var name: String = ""
-    var content: MutableList<FavoriteMovie> = mutableListOf()
-
-    @OneToOne
-    var user: User? = null
 }
+
+    @ManyToOne
+    var user: User? = null
