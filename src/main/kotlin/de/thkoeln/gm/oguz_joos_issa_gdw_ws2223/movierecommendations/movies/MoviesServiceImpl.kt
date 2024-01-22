@@ -4,6 +4,7 @@ import MoviesRepository
 import org.springframework.data.repository.findByIdOrNull
 import java.util.*
 
+// Defining abstract class MoviesServiceImpl -> no need to override every function
 abstract class MoviesServiceImpl (private val moviesRepository: MoviesRepository) : MoviesService {
     override fun findById(id: UUID): Movie? {
         return moviesRepository.findByIdOrNull(id)

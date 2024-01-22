@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 import java.util.*
 
-
+// data class for movie to filter/ map information
 data class MovieDTO(
     val movieId: UUID,
     val name: String,

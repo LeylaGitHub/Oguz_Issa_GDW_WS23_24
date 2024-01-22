@@ -8,15 +8,19 @@ import jakarta.persistence.ManyToOne
 import org.hibernate.annotations.GenericGenerator
 import java.util.*
 
+// JPA entity class representing a FavoriteMovie.
+// Automatically generated UUID for the favorite movie.
+// movie id, name
+
 @Entity
 class FavoriteMovie {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    // Automatically generated UUID for the movie.
     var id: UUID = UUID.randomUUID()
     var name: String = ""
 }
 
+// Many-to-One relationship with the user entity.
 @ManyToOne
 var user: User? = null

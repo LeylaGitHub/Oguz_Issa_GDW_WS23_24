@@ -10,6 +10,9 @@ import org.hibernate.annotations.GenericGenerator
 import org.hibernate.annotations.ManyToAny
 import java.util.*
 
+// JPA entity class representing a Movie.
+// Automatically generated UUID for the movie.
+// movie id, name, date of release, fsk, duration, genre
 @Entity
 class Movie {
     @Id
@@ -23,6 +26,7 @@ class Movie {
     //    var genre: List<Genre> = listOf() //List<Genre> nicht möglich-->"Basic attribute type should not be a container"
     var genre: String = ""
 
+    // Many-to-One relationship with the User entity.
     @ManyToOne
     var user: User? = null
 

@@ -2,6 +2,7 @@ package de.thkoeln.gm.movierecommendations.favoriteMovies
 
 import java.util.*
 
+// Abstract class implementing FavoriteMoviesService interface
 abstract class FavoriteMovieController (private val favoriteMoviesService: FavoriteMoviesService) : FavoriteMoviesService{
 
     override fun findAll(): List<FavoriteMovie> {

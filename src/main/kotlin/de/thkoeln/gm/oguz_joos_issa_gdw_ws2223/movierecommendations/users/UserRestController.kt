@@ -36,35 +36,43 @@ class UserRestController (private val usersService: UsersService) {
         return usersService.save(newUser)
     }
 
+    // Handles HTTP PATCH requests to update an existing user.
     @PatchMapping ("/user/{userId}")
     fun updateUser(@PathVariable userId: UUID, @RequestBody updatedUser: User): User {
+        // Gets the existing user by ID or throws an exception if not found.
         val existingUser = usersService.findById(userId) ?: throw NoSuchElementException()
 
+        // Updates the existing user with the provided data.
         existingUser.apply {
             name = updatedUser.name
             mail = updatedUser.mail
         }
-
+        // Saves the updated user and returns the saved instance.
         return usersService.save(existingUser)
     }
 
+    // Handles HTTP GET requests to get all users.
     @GetMapping ("/users")
     fun getAllUsers(): List<UserDTO> {
         val users = usersService.findAll()
 
         if (users.isEmpty()) {
+            // Throws an exception if no users are found.
             throw NoSuchElementException("No users found.")
         }
 
         return users.map { user -> UserDTO(user.id, user.mail, user.name) }
     }
 
+    // Handles HTTP DELETE requests to delete a user by ID.
     @DeleteMapping("/user/{userId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun deleteUser(@PathVariable userId: UUID) {
+        // Throws an exception if the user with the given ID does not exist.
         if (!usersService.existsById(userId)) {
             throw NoSuchElementException("User not found with ID: $userId")
         }
+        // Delete the user.
         usersService.deleteById(userId)
     }
 
