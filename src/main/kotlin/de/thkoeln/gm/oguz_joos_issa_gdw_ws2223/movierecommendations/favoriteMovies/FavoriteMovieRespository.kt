@@ -1,6 +1,6 @@
-package de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.favoriteMovies
+package de.thkoeln.gm.movierecommendations.favoriteMovies
 
-import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.users.User
+import de.thkoeln.gm.movierecommendations.users.User
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 import java.util.*

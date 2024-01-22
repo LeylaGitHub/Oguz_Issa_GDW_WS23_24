@@ -1,6 +1,6 @@
-package de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.favoriteMovies
+package de.thkoeln.gm.movierecommendations.favoriteMovies
 
-import org.springframework.data.jpa.domain.AbstractPersistable_.id
+import org.springframework.data.jpa.domain.AbstractPersistable_
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import java.util.*
@@ -16,7 +16,7 @@ data class FavMovieDTO(
 class FavoriteMoviesRestController (private val favoriteMoviesService: FavoriteMoviesService) {
 
 
-    @GetMapping ("/favoriteMovies")
+    @GetMapping("/favoriteMovies")
     fun getAll(): List<FavoriteMovie> {
         val favMovies = favoriteMoviesService.findAll()
 
@@ -47,7 +47,7 @@ class FavoriteMoviesRestController (private val favoriteMoviesService: FavoriteM
     }
 
 
-    @GetMapping ("/favoriteMovies/{movieId}")
+    @GetMapping("/favoriteMovies/{movieId}")
     fun getFavMovie (@PathVariable favMovieId: UUID) : FavMovieDTO {
         val favMovie = favoriteMoviesService.findById(favMovieId) ?: throw NoSuchElementException()
 
@@ -59,7 +59,7 @@ class FavoriteMoviesRestController (private val favoriteMoviesService: FavoriteM
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun deleteFavMovie (@PathVariable favMovieId: UUID) {
         if (!favoriteMoviesService.existsById(favMovieId)) {
-            throw NoSuchElementException("Favorite Movie not found with ID: $id")
+            throw NoSuchElementException("Favorite Movie not found with ID: ${AbstractPersistable_.id}")
         }
         favoriteMoviesService.deleteById(favMovieId)
     }

@@ -1,15 +1,12 @@
-package de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.favoriteMovies
+package de.thkoeln.gm.movierecommendations.favoriteMovies
 
+import de.thkoeln.gm.movierecommendations.users.User
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id
-import org.hibernate.annotations.GenericGenerator
-import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.movies.Movie
-import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.users.User
 import jakarta.persistence.ManyToOne
-import jakarta.persistence.OneToOne
+import org.hibernate.annotations.GenericGenerator
 import java.util.*
-
 
 @Entity
 class FavoriteMovie {
@@ -21,5 +18,5 @@ class FavoriteMovie {
     var name: String = ""
 }
 
-    @ManyToOne
-    var user: User? = null
+@ManyToOne
+var user: User? = null

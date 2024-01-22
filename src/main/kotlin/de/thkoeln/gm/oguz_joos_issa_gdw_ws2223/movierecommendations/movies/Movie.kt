@@ -1,11 +1,13 @@
-package de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.movies
+package de.thkoeln.gm.movierecommendations.movies
 
-import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.users.User
+import de.thkoeln.gm.movierecommendations.users.User
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id
 import jakarta.persistence.ManyToOne
+import jakarta.persistence.OneToMany
 import org.hibernate.annotations.GenericGenerator
+import org.hibernate.annotations.ManyToAny
 import java.util.*
 
 @Entity
@@ -18,6 +20,7 @@ class Movie {
     var dateOfRelease: Date = Date()
     var fsk: Int = 0
     var duration: Int = 0
+    //    var genre: List<Genre> = listOf() //List<Genre> nicht möglich-->"Basic attribute type should not be a container"
     var genre: String = ""
 
     @ManyToOne

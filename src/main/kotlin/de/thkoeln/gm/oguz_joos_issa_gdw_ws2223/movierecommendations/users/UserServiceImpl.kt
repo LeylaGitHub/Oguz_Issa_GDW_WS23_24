@@ -1,4 +1,4 @@
-package de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.users
+package de.thkoeln.gm.movierecommendations.users
 
 import org.springframework.data.repository.findByIdOrNull
 import java.util.*

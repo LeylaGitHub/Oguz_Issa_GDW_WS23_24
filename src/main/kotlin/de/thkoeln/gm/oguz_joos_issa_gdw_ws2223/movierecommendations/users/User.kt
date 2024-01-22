@@ -1,6 +1,6 @@
-package de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.users
+package de.thkoeln.gm.movierecommendations.users
 
-import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.movies.Movie
+import de.thkoeln.gm.movierecommendations.movies.Movie
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id

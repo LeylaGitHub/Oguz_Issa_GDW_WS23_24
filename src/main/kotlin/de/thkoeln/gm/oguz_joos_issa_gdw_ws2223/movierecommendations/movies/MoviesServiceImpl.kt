@@ -1,5 +1,6 @@
-package de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.movies
+package de.thkoeln.gm.movierecommendations.movies
 
+import MoviesRepository
 import org.springframework.data.repository.findByIdOrNull
 import java.util.*
 

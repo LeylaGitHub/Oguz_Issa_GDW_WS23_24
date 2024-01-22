@@ -1,5 +1,4 @@
-package de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.movies
-
+import de.thkoeln.gm.movierecommendations.movies.Movie
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository

@@ -1,4 +1,4 @@
-package de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.favoriteMovies
+package de.thkoeln.gm.movierecommendations.favoriteMovies
 
 import java.util.*
 

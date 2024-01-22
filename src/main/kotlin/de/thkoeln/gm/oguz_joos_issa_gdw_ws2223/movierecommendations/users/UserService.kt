@@ -1,7 +1,7 @@
-package de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.users
+package de.thkoeln.gm.movierecommendations.users
 
-import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.movies.Movie
 import java.util.*
+
 
 interface UsersService {
     fun findById(id: UUID): User?

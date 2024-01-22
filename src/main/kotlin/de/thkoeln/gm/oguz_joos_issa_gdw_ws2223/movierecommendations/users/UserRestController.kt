@@ -1,10 +1,8 @@
-package de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.users
+package de.thkoeln.gm.movierecommendations.users
 
-import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.movies.Movie
-import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.movies.MoviesService
-import org.springframework.data.crossstore.ChangeSetPersister
-import org.springframework.data.jpa.domain.AbstractPersistable_.id
 import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
+import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 import java.util.*
 import kotlin.NoSuchElementException
