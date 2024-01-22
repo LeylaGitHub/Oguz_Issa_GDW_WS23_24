@@ -13,7 +13,7 @@ abstract class MoviesServiceImpl (private val moviesRepository: MoviesRepository
     }
 
     override fun findByGenre(genre: String): List<Movie> {
-        return getAllMovies().filter { TODO()/* X == genre */ }.toList()
+        return moviesRepository.findByGenre(genre)
     }
 
     override fun generateMovie(movie: Movie) {
