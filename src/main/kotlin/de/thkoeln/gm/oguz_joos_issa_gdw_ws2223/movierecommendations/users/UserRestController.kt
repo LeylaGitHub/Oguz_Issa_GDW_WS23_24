@@ -9,23 +9,30 @@ import org.springframework.web.bind.annotation.*
 import java.util.*
 import kotlin.NoSuchElementException
 
+// data class for User, to filter relevant information.
 data class UserDTO(
     val userId: UUID,
     val mail: String,
     val name: String
 )
 
+// Marks the class as a Spring REST controller.
 @RestController
 @RequestMapping("api/v4")
 class UserRestController (private val usersService: UsersService) {
+
+    // Handles HTTP GET requests for retrieving a specific user by ID.
     @GetMapping("/user/{userId}")
     fun getUser(@PathVariable userId: UUID): UserDTO {
         val user = usersService.findById(userId) ?: throw NoSuchElementException()
 
+        // Maps the user entity to a UserDTO for response.
         return UserDTO(user.id, user.mail, user.name)
     }
 
+    // Handles HTTP POST requests for creating a new user.
     @PostMapping (("/user"))
+    // Sets the HTTP response status to 201 Created.
     @ResponseStatus(HttpStatus.CREATED)
     fun createUser (@RequestBody newUser: User) : User {
         return usersService.save(newUser)

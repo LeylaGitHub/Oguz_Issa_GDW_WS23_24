@@ -1,6 +1,5 @@
 package de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.users
 
-//import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.genre.Genre
 import de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.movies.Movie
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -9,6 +8,10 @@ import jakarta.persistence.ManyToOne
 import org.hibernate.annotations.GenericGenerator
 import java.util.*
 
+// JPA entity class representing a User.
+// Automatically generated UUID for the user.
+// Users id, name, mail, age
+// List of user's favorite movies.
 @Entity
 class User {
     @Id
@@ -19,9 +22,8 @@ class User {
     var mail: String = ""
     var age: Int = 0
     var favouriteMovies: MutableList<Movie> = mutableListOf()
-  //  var favouriteGenres: MutableList<Genre> = mutableListOf()
 
-
+    // Many-to-One relationship with the Movie entity.
     @ManyToOne
     var movie: Movie? = null
 

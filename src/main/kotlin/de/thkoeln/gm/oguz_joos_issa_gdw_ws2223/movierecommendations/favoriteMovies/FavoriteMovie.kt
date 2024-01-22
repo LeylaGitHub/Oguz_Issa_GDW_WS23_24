@@ -10,11 +10,13 @@ import jakarta.persistence.ManyToOne
 import jakarta.persistence.OneToOne
 import java.util.*
 
+
 @Entity
 class FavoriteMovie {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    // Automatically generated UUID for the movie.
     var id: UUID = UUID.randomUUID()
     var name: String = ""
 }
