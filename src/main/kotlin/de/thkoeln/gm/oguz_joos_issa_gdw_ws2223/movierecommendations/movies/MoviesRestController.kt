@@ -1,3 +1,4 @@
+/*
 package de.thkoeln.gm.oguz_joos_issa_gdw_ws2223.movierecommendations.movies
 
 import de.thkoeln.gm.movierecommendations.movies.Movie
@@ -60,7 +61,8 @@ class MoviesRestController(private val moviesService: MoviesService) {
         }
     }
 
-    /*    @PostMapping("/users/{userId}/movies")
+    */
+/*    @PostMapping("/users/{userId}/movies")
         fun favorise(id: UUID, @PathVariable userId: UUID): Movie {
             val user: User? = usersService.findById(userId)
             if(user != null) {
@@ -72,5 +74,7 @@ class MoviesRestController(private val moviesService: MoviesService) {
             } else {
                 throw ChangeSetPersister.NotFoundException()
             }
-        }*/
+        }*//*
+
 }
+*/
